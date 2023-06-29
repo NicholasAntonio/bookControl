@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+    <title>Controle de Livros</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="book-input">
+            <i class='bx bx-book-open'></i>
+            <input type="text" placeholder="Adicionar livro">
+        </div>
+
+        <div class="controls">
+            <div class="filters">
+                <span id="all" class="active">Todos</span>
+                <span id="reading">Em leitura</span>
+                <span id="completed">Lidos</span>
+            </div>
+            <button class="clear-btn">Limpar</button>
+        </div>
+        <ul class="book-field"></ul>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
