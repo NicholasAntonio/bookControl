@@ -7,6 +7,13 @@ let editId,
   isEditBook = false,
   books = JSON.parse(localStorage.getItem("book-list"));
 
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document.querySelector(".loader").style.display = "none";
+    document.querySelector(".wrapper").style.display = "block";
+  }, 2000);
+});
+
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelector("span.active").classList.remove("active");
@@ -33,10 +40,10 @@ function showBook(filter) {
             <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
             <p class="${completed}">${book.name}</p>
           </label>
-           <label for="number-${id}" class="number-label">Página:</label>
-      <input type="number" id="number-${id}" class="number-input" value="${
+           <label for="number-${id}" class="number-label"><i class='bx bx-bookmark-alt'></i>Página:<input type="number" id="number-${id}" class="number-input" value="${
           book.number || ""
         }" onchange="saveNumber(${id}, this.value)" onblur="updateNumber(${id}, this.value)">
+        </label>
     </label>
           <div class="settings">
             <ul>

@@ -15,12 +15,14 @@ body {
 }
 
 .wrapper {
+  display: none;
   max-width: 500px;
   background-color: #fff;
   margin: 150px auto;
   padding: 18px;
   border-radius: 7px;
   box-shadow: 0 10px 30px rgba(153, 144, 144, 0.293);
+  animation: entry ease 0.5s;
 }
 
 .book-input {
@@ -43,6 +45,7 @@ body {
   font-size: 20px;
   border-radius: 5px;
   padding: 0 20px 0 53px;
+  color: #d9b97e;
   border: 1px solid #d9b97e;
 }
 
@@ -73,10 +76,13 @@ li {
 .filters {
   display: flex;
   gap: 20px;
+  cursor: pointer;
 }
 
 .filters span.active {
   font-weight: bold;
+  transform: scale(1.08);
+  transition: all 0.1s;
   color: #e0bd3c;
   border-bottom: 1px solid #e0bd3c;
 }
@@ -104,7 +110,6 @@ li {
 .clear-btn:active {
   transform: scale(0.93);
 }
-
 
 .book-field {
   margin-top: 20px;
@@ -138,6 +143,12 @@ li {
   padding-bottom: 16px;
   align-items: flex-start;
   border-bottom: 1px solid #ccc;
+  color: #dac75c;
+}
+
+.book-field span {
+  color: #e0bd3c;
+  font-size: 20px;
 }
 
 .book-field .book:last-child {
@@ -152,47 +163,271 @@ li {
 }
 
 .book-field .book-label input {
-  margin-top: 7px;
+  margin-top: 5px;
   accent-color: #111;
+  cursor: pointer;
 }
 
 .book-field .book-label p {
   user-select: none;
   margin-left: 12px;
   word-wrap: break-word;
+  width: 80px;
 }
 
 .book .book-label p.checked {
-  text-decoration:line-through ;
+  text-decoration: line-through;
+  opacity: 60%;
 }
 
-.book .number-input{
+.book .number-input {
   font-size: 16px;
-  padding: 10px 0;
+  padding-left: 8px;
   border: none;
   border-bottom: 1px solid #d9b97e;
   color: #d9b97e;
-  width:30px;
+  width: 30px;
   background-color: transparent;
   transition: border-color 0.3s ease-in-out;
 }
 
-.book .number-input:focus{
+.book .number-input:focus {
   outline: none;
   border-bottom: 3px solid #e0bd3c;
-  transition: ease .1s ;
+  transition: ease 0.1s;
+}
+
+.book .settings li {
+  margin-bottom: 20px;
+}
+
+.book .settings i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.book .settings i:hover {
+  font-size: 25px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.loader {
+  --background: linear-gradient(135deg, #23c4f8, #275efe);
+  --shadow: rgba(39, 94, 254, 0.28);
+  --text: #6c7486;
+  --page: rgba(255, 255, 255, 0.36);
+  --page-fold: rgba(255, 255, 255, 0.52);
+  --duration: 3s;
+  width: 200px;
+  height: 140px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before,
+.loader:after {
+  --r: -6deg;
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  width: 120px;
+  top: 80%;
+  box-shadow: 0 16px 12px var(--shadow);
+  transform: rotate(var(--r));
+}
+
+.loader:before {
+  left: 4px;
+}
+
+.loader:after {
+  --r: 6deg;
+  right: 4px;
+}
+
+.loader div {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+  position: relative;
+  z-index: 1;
+  perspective: 600px;
+  box-shadow: 0 4px 6px var(--shadow);
+  background-image: var(--background);
+}
+
+.loader div ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+}
+
+.loader div ul li {
+  --r: 180deg;
+  --o: 0;
+  --c: var(--page);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transform-origin: 100% 50%;
+  color: var(--c);
+  opacity: var(--o);
+  transform: rotateY(var(--r));
+  -webkit-animation: var(--duration) ease infinite;
+  animation: var(--duration) ease infinite;
+}
+
+.loader div ul li:nth-child(2) {
+  --c: var(--page-fold);
+  -webkit-animation-name: page-2;
+  animation-name: page-2;
+}
+
+.loader div ul li:nth-child(3) {
+  --c: var(--page-fold);
+  -webkit-animation-name: page-3;
+  animation-name: page-3;
+}
+
+.loader div ul li:nth-child(4) {
+  --c: var(--page-fold);
+  -webkit-animation-name: page-4;
+  animation-name: page-4;
+}
+
+.loader div ul li:nth-child(5) {
+  --c: var(--page-fold);
+  -webkit-animation-name: page-5;
+  animation-name: page-5;
+}
+
+.loader div ul li svg {
+  width: 90px;
+  height: 120px;
+  display: block;
+}
+
+.loader div ul li:first-child {
+  --r: 0deg;
+  --o: 1;
+}
+
+.loader div ul li:last-child {
+  --o: 1;
+}
+
+.loader span {
+  display: block;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text);
+}
+
+@keyframes page-2 {
+  0% {
+    transform: rotateY(180deg);
+    opacity: 0;
   }
 
-input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+  20% {
+    opacity: 1;
+  }
 
+  35%,
+  100% {
+    opacity: 0;
+  }
 
+  50%,
+  100% {
+    transform: rotateY(0deg);
+  }
+}
 
+@keyframes page-3 {
+  15% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
 
+  35% {
+    opacity: 1;
+  }
 
+  50%,
+  100% {
+    opacity: 0;
+  }
+
+  65%,
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes page-4 {
+  30% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  65%,
+  100% {
+    opacity: 0;
+  }
+
+  80%,
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes page-5 {
+  45% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+  }
+
+  95%,
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes entry {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transformr: scale(1);
+    opacity: 1;
+  }
+}
 
 @media (max-width: 400px) {
   body {
