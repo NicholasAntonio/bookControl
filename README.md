@@ -1,6 +1,6 @@
 ## 🖥️ Projeto
 
-Essa é uma aplicação web responsiva em desenvolvimento de um controlador de livros. O usuário marca o livro que está lendo no momento e vai marrcando a página em que parou. Uso de localStorage e manipução de DOM.
+Essa é uma aplicação web responsiva de um controlador de livros. Semelhante a uma to-do-list, até mesmo no código. Serviu de aprendizado e revisão do código recém criado da To-do-list presente nesse perfil.
 
 ## 👨‍💻 Tecnologias
 Projeto pessoal realizado com as seguintes tecnologias:
@@ -8,5 +8,10 @@ Projeto pessoal realizado com as seguintes tecnologias:
 - HTML
 - CSS
 - JavaScript
-- iframes
 - Git e Github
+- Open-source UI elements
+
+
+## 📷 Preview
+
+![msedge_io8wmayNtM](https://github.com/NicholasAntonio/bookControl/assets/132156803/09579920-c322-42bd-bc9a-4b1cc275e690)
